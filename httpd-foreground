@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+# Most of this file is a copy from the default used by the image httpd
+# Edited so we can start shibd before apache starts
+
+# Start shibd
+/etc/init.d/shibd start
+
+# Apache gets grumpy about PID files pre-existing
+rm -f /usr/local/apache2/logs/httpd.pid
+
+exec httpd -DFOREGROUND
