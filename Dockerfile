@@ -2,7 +2,6 @@ FROM httpd:2.4
 
 # 'gettext-base' is for 'envsubst'
 RUN apt-get -q update && \
-  apt-get -y upgrade && \
   apt-get -y install libapache2-mod-shib2 gettext-base && \
   apt-get -y autoremove
 
