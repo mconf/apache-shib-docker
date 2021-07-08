@@ -3,6 +3,4 @@ set -e
 
 envsubst '${HTTPD_SERVER_NAME} ${HTTPD_SERVER_ADMIN} ${HTTPD_SECURE_LOCATION} ${HTTPD_PROXY_TO} ${HTTPD_LOG_LEVEL}' < /usr/local/apache2/conf/extra/httpd-vhosts.conf.tmpl > /usr/local/apache2/conf/extra/httpd-vhosts.conf
 
-envsubst '${SHIB_SERVER_DOMAIN} ${SHIB_SUPPORT_EMAIL} ${SHIB_SP_KEY_FILE} ${SHIB_SP_CERT_FILE}' < /etc/shibboleth/shibboleth2.xml.tmpl > /etc/shibboleth/shibboleth2.xml
-
 exec "$@"
