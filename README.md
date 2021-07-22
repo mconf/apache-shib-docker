@@ -21,7 +21,8 @@ docker build -t apache-shib .
 Run the container (this is an example containing several XML and certificate files that you might need to mount on the container depending on your Shibboleth configurations):
 
 ```
-docker run --rm -it --name apache-shib -e SHIB_SERVER_DOMAIN=example.com \
+docker run --rm -it --name apache-shib \
+  -e HTTPD_SHARED_SECRET=secret-to-your-application \
   -v /home/user/shib/shibboleth2.xml:/etc/shibboleth/shibboleth2.xml \
   -v /home/user/shib/attribute-map.xml:/etc/shibboleth/attribute-map.xml \
   -v /home/user/shib/attribute-policy.xml:/etc/shibboleth/attribute-policy.xml \

@@ -21,6 +21,8 @@ ENV HTTPD_SERVER_ADMIN root@0.0.0.0
 ENV HTTPD_SECURE_LOCATION /secure
 ENV HTTPD_PROXY_TO http://0.0.0.0:3000/secure
 ENV HTTPD_LOG_LEVEL info
+ENV HTTPD_SHARED_SECRET_HEADER SHIB_SHARED_SECRET
+ENV HTTPD_SHARED_SECRET change-me
 
 # don't serve the default html
 RUN rm /usr/local/apache2/htdocs/index.html

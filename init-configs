@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
 
-envsubst '${HTTPD_SERVER_NAME} ${HTTPD_SERVER_ADMIN} ${HTTPD_SECURE_LOCATION} ${HTTPD_PROXY_TO} ${HTTPD_LOG_LEVEL}' < /usr/local/apache2/conf/extra/httpd-vhosts.conf.tmpl > /usr/local/apache2/conf/extra/httpd-vhosts.conf
+envsubst '${HTTPD_SERVER_NAME} ${HTTPD_SERVER_ADMIN} ${HTTPD_SECURE_LOCATION} ${HTTPD_PROXY_TO} ${HTTPD_LOG_LEVEL} ${HTTPD_SHARED_SECRET} ${HTTPD_SHARED_SECRET_HEADER}' < /usr/local/apache2/conf/extra/httpd-vhosts.conf.tmpl > /usr/local/apache2/conf/extra/httpd-vhosts.conf
 
 exec "$@"
