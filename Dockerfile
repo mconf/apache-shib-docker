@@ -1,4 +1,4 @@
-FROM httpd:2.4
+FROM httpd:2.4.48
 
 # 'gettext-base' is for 'envsubst'
 RUN apt-get -q update && \
@@ -11,7 +11,7 @@ RUN sed -i \
   -e '/LoadModule proxy_http_module/s/^#//g' \
   -e '/LoadModule rewrite_module/s/^#//g' \
   -e '/ServerAdmin/s/^/#/g' \
-  -e '/LoadModule rewrite_module/a LoadModule mod_shib /usr/lib/apache2/modules/mod_shib2.so' \
+  -e '/LoadModule rewrite_module/a LoadModule mod_shib /usr/lib/apache2/modules/mod_shib.so' \
   -e '/httpd-vhosts.conf/s/^#//g' \
   /usr/local/apache2/conf/httpd.conf
 
