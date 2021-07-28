@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+NAME=shibd
+SHIBSP_CONFIG=/etc/shibboleth/shibboleth2.xml
+SHIBD_WAIT=30
+PIDFILE=/run/shibboleth/$NAME.pid
+
+[ -d '/run/shibboleth' ] || mkdir -p '/run/shibboleth'
+/usr/sbin/shibd -f -c $SHIBSP_CONFIG -p $PIDFILE -w $SHIBD_WAIT -F

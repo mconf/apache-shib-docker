@@ -1,0 +1,10 @@
+FROM debian:buster-slim
+
+RUN apt-get -q update && \
+  apt-get -y install libapache2-mod-shib2 && \
+  apt-get -y autoremove
+
+COPY shibd-foreground /usr/local/bin
+RUN chmod a+x /usr/local/bin/shibd-foreground
+
+CMD ["shibd-foreground"]

@@ -12,10 +12,11 @@ There's one main file that you will certainly need to change: `/etc/shibboleth/s
 
 ## How to use it
 
-Build the image:
+Build the images:
 
 ```
-docker build -t apache-shib .
+docker build -t apache-shib -f Dockerfile.httpd .
+docker build -t shib -f Dockerfile.shib .
 ```
 
 Run the container (this is an example containing several XML and certificate files that you might need to mount on the container depending on your Shibboleth configurations):
@@ -24,15 +25,22 @@ Run the container (this is an example containing several XML and certificate fil
 docker run --rm -it --name apache-shib \
   -e HTTPD_SHARED_SECRET=secret-to-your-application \
   -v /home/user/shib/shibboleth2.xml:/etc/shibboleth/shibboleth2.xml \
+  -v /var/run/shibboleth:/var/run/shibboleth \
+  apache-shib
+
+docker run --rm -it --name shib \
+  -v /home/user/shib/shibboleth2.xml:/etc/shibboleth/shibboleth2.xml \
   -v /home/user/shib/attribute-map.xml:/etc/shibboleth/attribute-map.xml \
   -v /home/user/shib/attribute-policy.xml:/etc/shibboleth/attribute-policy.xml \
   -v /home/user/shib/sp-cert.pem:/etc/shibboleth/sp-cert.pem \
   -v /home/user/shib/sp-key.pem:/etc/shibboleth/sp-key.pem \
-  apache-shib
+  -v /var/run/shibboleth:/var/run/shibboleth \
+  shib
 ```
 
 ## TODO
 
-[ ] Comment on the ENV variables available to customize Apache.
-[ ] Comment on how it proxies the request to the web app using headers to pass on Shib data.
-[ ] How to run the reverse proxy in front of it.
+* Great reference https://gitlab.oit.duke.edu/devil-ops/duke-shibboleth-container
+* Comment on the ENV variables available to customize Apache.
+* Comment on how it proxies the request to the web app using headers to pass on Shib data.
+* Comment on how to setup on k8s

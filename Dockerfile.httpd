@@ -33,9 +33,6 @@ ADD vhosts.conf /usr/local/apache2/conf/extra/httpd-vhosts.conf.tmpl
 COPY init-configs /usr/local/bin
 RUN chmod a+x /usr/local/bin/init-configs
 
-COPY httpd-foreground /usr/local/bin
-RUN chmod a+x /usr/local/bin/httpd-foreground
-
 EXPOSE 80
 
 ENTRYPOINT ["init-configs"]
