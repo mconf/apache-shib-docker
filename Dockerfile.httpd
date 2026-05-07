@@ -1,8 +1,9 @@
 FROM httpd:2.4.67
+# based on Debian 13 (trixie)
 
 # 'gettext-base' is for 'envsubst'
 RUN apt-get -q update && \
-  apt-get -y install libapache2-mod-shib2 gettext-base && \
+  apt-get -y install libapache2-mod-shib gettext-base && \
   apt-get -y autoremove
 
 # edit the default Apache config to enable some modules and disable things we don't want

@@ -1,7 +1,7 @@
 FROM debian:12.13-slim
 
 RUN apt-get -q update && \
-  apt-get -y install libapache2-mod-shib2 && \
+  apt-get -y install libapache2-mod-shib && \
   apt-get -y autoremove
 
 COPY shibd.logger /etc/shibboleth/shibd.logger
