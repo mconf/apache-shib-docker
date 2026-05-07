@@ -1,4 +1,4 @@
-FROM httpd:2.4.48
+FROM httpd:2.4.67
 
 # 'gettext-base' is for 'envsubst'
 RUN apt-get -q update && \
